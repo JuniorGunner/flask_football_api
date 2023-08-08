@@ -5,9 +5,11 @@ WORKDIR /santex_test
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
+ENV PYTHONPATH /santex_test:$PYTHONPATH
+
 COPY . .
 
-CMD ["python", "app.py"]
+CMD ["python", "run.py"]
 
 
 # FROM python:3.9-slim
