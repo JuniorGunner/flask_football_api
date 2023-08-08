@@ -1,4 +1,10 @@
 from app import create_app
+import sys
+import os
+
+print("PYTHONPATH:", sys.path)
+print("Current Directory:", os.getcwd())
+
 
 app = create_app()
 
