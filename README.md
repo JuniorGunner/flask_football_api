@@ -21,10 +21,10 @@ This will build the Docker image and start the server at http://localhost:5000.
 
 API Endpoints :link:
 
-* /import-league/<leagueCode>
-* /players/<leagueCode>
-* /team/<teamName>
-* /players-of-team/<teamName>
+* /import-league/\<leagueCode\>
+* /players/\<leagueCode\>
+* /team/\<teamName\>
+* /players-of-team/\<teamName\>
 
 License :page_with_curl:
 This project is licensed under the MIT License.
