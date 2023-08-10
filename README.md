@@ -1,23 +1,38 @@
 # Football Data API Project :soccer:
 
-This is a project to create a REST API that interacts with the Football-data.org API, imports the data locally to a database and expose endpoints for getting the data. 
+This project is designed to create a REST API that interacts with the Football-data.org API, imports the data locally to a MongoDB database, and exposes endpoints for fetching the said data. 
 
 ## Tech Stack 🛠️
 
--  🐍 **Python** - was chosen for its simplicity and readability, making the code easy to write and maintain.
-- 🌶️ **Flask** - is a simple and lightweight framework which is great for small to medium applications.
-- 🗄️ **SQLAlchemy** - is a powerful ORM that provides high-level and pythonic interface to SQL databases, providing a lot of flexibility and reducing the need to write raw SQL.
-- 🐳 **Docker** - makes it easier to create, deploy, and run applications by using containers, which allows a developer to package up an application with all the parts it needs, such as libraries and other dependencies, and ship it all out as one package.
+- 🐍 **Python** - Chosen for its simplicity and readability, making the code easy to write and maintain.
+- 🌶️ **Flask** - A lightweight and versatile micro web framework suitable for small to medium applications.
+- 🍃 **MongoDB** - A popular NoSQL database, known for its scalability and flexibility when dealing with large amounts of data and complex software applications.
+- 🐳 **Docker** - Simplifies the process of creating, deploying, and running applications using containers. It enables developers to package an application and its dependencies into a single container.
 
 ## Getting Started :rocket:
 
-You can run the project locally with Docker and Docker Compose:
+### Prerequisites:
+- Ensure that Docker and Docker Compose are installed on your machine.
 
-```bash
-docker-compose up
+### Running the project:
+
+1. First of all, clone this repository;
+
+2. Make sure to get a personal token for test on [Football Data API](https://www.football-data.org/client/register);
+
+3. Add your token to API_TOKEN environment variable:
+```
+export API_TOKEN=your_token_here
 ```
 
-This will build the Docker image and start the server at http://localhost:5000.
+3. Build and run the project using docker-compose:
+```
+docker-compose up --build
+```
+
+4. Once the server is running, you can access the API at http://localhost:5000.
+
+For a better experince test it using Postman or other tool of your preference.
 
 API Endpoints :link:
 
