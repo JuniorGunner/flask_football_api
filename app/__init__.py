@@ -1,30 +1,25 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from config import config
+from flask_pymongo import PyMongo  # Using Flask-PyMongo as a bridge
 
-
-# Extensions are initialized here without binding to the app.
-db = SQLAlchemy()
-migrate = Migrate()
-
+mongo = PyMongo()
 
 def create_app(config_name='default'):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
 
     # Initialize extensions
-    db.init_app(app)
-    migrate.init_app(app, db)
-
-    # Model imports
-    from .models.competition import Competition
-    from .models.team import Team
-    from .models.player import Player
-    from .models.coach import Coach
+    mongo.init_app(app)
 
     # Register blueprints
-    from app.routes.main import main
-    app.register_blueprint(main)
+    from app.routes.index import index_blueprint
+    from app.routes.league import league_blueprint
+    from app.routes.players import players_blueprint
+    from app.routes.team import team_blueprint
+
+    app.register_blueprint(index_blueprint)
+    app.register_blueprint(league_blueprint)
+    app.register_blueprint(players_blueprint)
+    app.register_blueprint(team_blueprint)
 
     return app

@@ -1,37 +1,24 @@
 version: '3.8'
+
 services:
   app:
     build: .
+    environment:
+      - API_TOKEN=${API_TOKEN}
+      - MONGO_URI=mongodb://mongo:27017/santex_test # Setting the URI for MongoDB
     volumes:
       - .:/santex_test
     ports:
       - 5000:5000
+    depends_on:
+      - mongo # Ensure that the app starts after MongoDB
 
-# version: '3.8'
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017 # Expose MongoDB's port so you can connect to it externally
+    volumes:
+      - mongo-data:/data/db
 
-# services:
-#   web:
-#     build: .
-#     ports:
-#       - "5000:5000"
-#     volumes:
-#       - .:/my_flask_app
-#     environment:
-#       - FLASK_ENV=development
-#       - FLASK_APP=run.py
-#     depends_on:
-#       - db
-#   db:
-#     image: postgres:13
-#     environment:
-#       - POSTGRES_DB=mydatabase
-#       - POSTGRES_USER=myuser
-#       - POSTGRES_PASSWORD=mypassword
-#     ports:
-#       - "5432:5432"
-#     volumes:
-#       - postgres_data:/var/lib/postgresql/data
-
-# volumes:
-#   postgres_data:
-
+volumes:
+  mongo-data:

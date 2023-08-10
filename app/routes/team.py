@@ -1,28 +1,19 @@
 from flask import Blueprint, jsonify
-from ..models.team import Team
+from app import mongo
 
 team_blueprint = Blueprint('team', __name__)
 
 @team_blueprint.route('/team/<teamName>', methods=['GET'])
 def get_team(teamName):
-    """Endpoint to fetch details of a team by its name.
-
-    Parameters:
-        teamName (str): The name of the team to be fetched.
-
-    Returns:
-        dict: Team details or error message if teamName is not found.
-    """
-
-    team = Team.query.filter_by(name=teamName).first()
+    team = mongo.db.teams.find_one({"name": teamName})
 
     if not team:
         return jsonify({"message": "Team not found"}), 404
 
     return jsonify({
-        "name": team.name,
-        "tla": team.tla,
-        "shortName": team.shortName,
-        "areaName": team.areaName,
-        "address": team.address
+        "name": team["name"],
+        "tla": team["tla"],
+        "shortName": team["shortName"],
+        "areaName": team["area"]["name"],
+        "address": team.get("address", "")
     })
