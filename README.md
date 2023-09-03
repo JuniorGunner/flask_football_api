@@ -1,4 +1,4 @@
-# Football Data API Project :soccer:
+# Football Data API :soccer:
 
 This project is designed to create a REST API that interacts with the Football-data.org API, imports the data locally to a MongoDB database, and exposes endpoints for fetching the said data. 
 
