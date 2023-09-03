@@ -34,9 +34,15 @@ docker-compose up --build
 
 For a better experince test it using Postman or other tool of your preference.
 
+### Testing the endpoints :test_tube:
+
+1. First of all, hit `/import-league/\<leagueCode\>` - it will import all data for the league code on the path parameter (leagues used on this test: PD, CL, PL);
+2. Once everything was imported, you'll see the following message `"Imported league data for league code: {leagueCode}"`;
+3. After that, the data will be on your MongoDB instance. You can check it directly through MongoDB Compass (or other MongoDB tool of your preference) and accessing the endpoints listed below;
+
 API Endpoints :link:
 
-* /import-league/\<leagueCode\>
+* /import-league/\<leagueCode\> (P.S.: Use only once yo import data and save on MongoDB)
 * /players/\<leagueCode\>
 * /team/\<teamName\>
 * /players-of-team/\<teamName\>
